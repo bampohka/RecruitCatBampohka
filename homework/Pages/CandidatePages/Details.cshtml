@@ -1,0 +1,74 @@
+@* @page *@
+@page "{id:int}"
+@model homework.Pages.CandidatePages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Candidate: @Model.Candidate.FirstName @Model.Candidate.LastName</h1>
+
+<div>
+    <h4>Candidate</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidate.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidate.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidate.TargetSalary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.TargetSalary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidate.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidate.PhoneNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Candidate.YearsOfExperince)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.YearsOfExperince)
+        </dd>
+        <dt class = "col-sm-2">
+            Company
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.Company.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Job Title
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.JobTitle.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            Industry
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Candidate.Industry.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Candidate.CandidateId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

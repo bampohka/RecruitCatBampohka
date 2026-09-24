@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("homeworkContext") ?? throw new InvalidOperationException("Connection string 'homeworkContext' not found.");
+
+builder.Services.AddDbContext<homeworkContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddRazorPages();

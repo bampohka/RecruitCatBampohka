@@ -1,0 +1,103 @@
+@page
+@model homework.Pages.CompanyPages.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Company: @Model.Company.Name</h1>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.PositionName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.PositionName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MinimumSalary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.MinimumSalary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.MaximumSalary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.MaximumSalary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.StartDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.StartDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Location)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.Location)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.ContactEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.ContactEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            Industry
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Company.Industry.Name)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <h4>Candidates</h4>
+    <hr />
+    @if (Model.Company.Candidates != null && Model.Company.Candidates.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Job Title</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var candidate in Model.Company.Candidates)
+                {
+                    <tr>
+                        <td>@candidate.FirstName</td>
+                        <td>@candidate.LastName</td>
+                        <td>@candidate.JobTitle?.Title</td>
+                        <td>@candidate.Email</td>
+                        <td>@candidate.PhoneNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p><em>No candidates associated with this company yet.</em></p>
+    }
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Company.CompanyId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
